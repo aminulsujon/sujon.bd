@@ -1,0 +1,25 @@
+Core Knowledge
+
+Frontend:
+HTML, CSS, Tailwind, Bootstrap
+
+JavaScript:
+JavaScript, JQuery, React.js, Express.js, Gridsome.js, Vue.js
+
+Backend:
+PHP, Laravel, CakePHP
+
+Database:
+MySQL, PostgreSQL, MongoDB
+
+Tools:
+Power BI, Tableau
+Jira, ClickUp
+
+DevOps:
+Cpanel, Linux VPS Hosting
+Git, Github, Docker, 
+CI/CD Pipelines (GitHub Actions)
+
+Google:
+Goolge Analytics, Google Search Console, Goolge AdSense, Google Tagmanager, Google Ad Manager
