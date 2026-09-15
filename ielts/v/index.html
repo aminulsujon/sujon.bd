@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>IELTS Vocabulary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg-color: #fff;
+      --text-color: #000;
+      --accent-color: #ddd;
+      --card-bg: #f5f5f5;
+      --border-radius: 8px;
+      --transition: 0.2s ease-in-out;
+      --font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-family);
+      line-height: 1.5;
+    }
+
+    header {
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 2rem;
+      font-weight: 600;
+      background: var(--accent-color);
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1rem;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid var(--accent-color);
+      padding-bottom: 0.25rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      margin: 0.5rem 0;
+      padding: 0.75rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      background: var(--accent-color);
+    }
+
+    .word {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .details {
+      margin-top: 0.5rem;
+      display: none;
+      font-size: 0.95rem;
+      color: #999;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        font-size: 1.5rem;
+      }
+
+      .section h2 {
+        font-size: 1.3rem;
+      }
+
+      .word {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>IELTS Vocabulary</header>
+  <div class="container" id="app"></div>
+  <script>
+    // Fetch the JSON file with explicit relative path
+    fetch('./vocavolary1.json')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok: ' + response.status);
+        }
+        return response.json();
+      })
+      .then(data => {
+        const app = document.getElementById('app');
+        // data is expected to have top‑level key "IELTS_Vocabulary"
+        const vocab = data['IELTS_Vocabulary'];
+        for (const [category, items] of Object.entries(vocab)) {
+          const section = document.createElement('section');
+          section.className = 'section';
+          const heading = document.createElement('h2');
+          heading.textContent = category.replace(/_/g, ' ');
+          section.appendChild(heading);
+          const content = document.createElement('div');
+          content.className = 'section-content';
+          content.style.display = 'none';
+          heading.style.cursor = 'pointer';
+          heading.addEventListener('click', () => {
+            content.style.display = content.style.display === 'none' ? 'block' : 'none';
+          });
+          items.forEach(entry => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            const word = document.createElement('div');
+            word.className = 'word';
+            word.textContent = entry.word;
+            const details = document.createElement('div');
+            details.className = 'details';
+            details.innerHTML = `<strong>Meaning:</strong> ${entry.meaning}<br/><strong>Example:</strong> ${entry.example}`;
+            card.appendChild(word);
+            card.appendChild(details);
+            card.addEventListener('click', () => {
+              details.style.display = details.style.display === 'none' ? 'block' : 'none';
+            });
+            content.appendChild(card);
+          });
+          section.appendChild(content);
+          app.appendChild(section);
+        }
+      })
+      .catch(err => {
+        console.error('Failed to load vocab:', err);
+        const app = document.getElementById('app');
+        app.textContent = 'Unable to load vocabulary data.';
+      });
+  </script>
+</body>
+
+</html>
