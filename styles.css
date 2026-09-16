@@ -19,7 +19,7 @@ a { color: inherit; text-decoration: none; }
 .section-shell { width: min(1180px, calc(100% - 64px)); margin: 0 auto; }
 .site-header { align-items: center; display: flex; height: 96px; justify-content: space-between; margin: 0 auto; max-width: 1320px; padding: 0 32px; }
 .brand { align-items: center; display: flex; gap: 10px; }
-.brand span { align-items: center; background: var(--coral); border-radius: 50%; color: var(--paper); display: flex; font-family: var(--serif); font-size: 18px; height: 38px; justify-content: center; width: 38px; }
+.brand span { align-items: center; border-radius: 50%; color: var(--paper); display: flex; font-family: var(--serif); font-size: 18px; height: 38px; justify-content: center; width: 38px; }
 .brand strong { font-family: var(--mono); font-size: 10px; letter-spacing: .11em; line-height: 1.15; }
 .main-nav { display: flex; gap: 34px; margin-left: 90px; }
 .main-nav a, .header-link { font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
@@ -47,7 +47,7 @@ h1 em, h2 em { color: var(--coral-deep); font-family: var(--serif); font-style: 
 .text-link span { font-size: 15px; margin-left: 8px; }
 .hero-visual { max-width: 470px; position: relative; }
 .portrait-frame { background: var(--lime); height: 500px; position: relative; }
-.portrait-frame img { filter: saturate(.82); height: 100%; mix-blend-mode: multiply; object-fit: cover; object-position: center; width: 100%; }
+.portrait-frame img { filter: saturate(.82); height: 100%; object-fit: cover; object-position: center; width: 100%; }
 .portrait-frame::after { border: 1px solid rgba(23, 35, 43, .24); content: ""; inset: 14px; pointer-events: none; position: absolute; }
 .portrait-label { font-family: var(--mono); font-size: 10px; left: 28px; line-height: 1.5; position: absolute; text-transform: uppercase; top: 27px; z-index: 2; }
 .portrait-label strong { font-size: 12px; }
